@@ -136,7 +136,6 @@ SGCN_beetles_full_richness <- purrr::map_int(SGCN_species_matched_byState, funct
 expected_beetles_richness <- purrr::map_int(expected_species_byState, function(state_data) state_data %>% dplyr::filter(grepl("Tiger Beetles$", speciesGlobal$informalTaxonomy)) %>% nrow())
 beetles_SGCN_expected_ratio <- (SGCN_beetles_full_richness/expected_beetles_richness)[expected_beetles_richness > 0]
 coverage_table$coverage[coverage_table$taxon == "Tiger Beetles"] <- sum(beetles_SGCN_expected_ratio > 0)/length(beetles_SGCN_expected_ratio)
-
 #' ##### Convert to percentage
 coverage_table <- coverage_table %>% 
   dplyr::mutate(coverage = ifelse(coverage > 1, 1, coverage),
