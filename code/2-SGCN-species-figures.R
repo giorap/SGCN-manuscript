@@ -165,7 +165,7 @@ SGCN_taxon_completeness <- ggplot() + #assign as object in environment
 #'
 #' #### Bottom panel: Numbers of animal species in each state wildlife action plan
 #' ##### Calculate summary
-SGCN_richness_actual_animals_full <- purrr::map_int(SGCN_species_byState, function(state_data) state_data %>% dplyr::filter(!(Taxonomic_Group %in% c("Plants", "Fungi"))) %>% nrow())
+SGCN_richness_actual_animals_full <- purrr::map_int(SGCN_species_byState, function(state_data) state_data %>% dplyr::filter(!(Taxonomic_Group %in% c("Other", "Plants", "Fungi"))) %>% nrow())
 #' ##### Update states object
 states <- states %>% 
   dplyr::mutate(SGCN_richness_actual_animals_full = SGCN_richness_actual_animals_full[states$state_name])
